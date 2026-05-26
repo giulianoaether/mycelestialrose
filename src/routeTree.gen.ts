@@ -9,8 +9,56 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as VoceRouteImport } from './routes/voce'
+import { Route as RosaRouteImport } from './routes/rosa'
+import { Route as MemoriasRouteImport } from './routes/memorias'
+import { Route as InicioRouteImport } from './routes/inicio'
+import { Route as FuturoRouteImport } from './routes/futuro'
+import { Route as EssencialRouteImport } from './routes/essencial'
+import { Route as CativarRouteImport } from './routes/cativar'
+import { Route as CartaRouteImport } from './routes/carta'
 import { Route as IndexRouteImport } from './routes/index'
 
+const VoceRoute = VoceRouteImport.update({
+  id: '/voce',
+  path: '/voce',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RosaRoute = RosaRouteImport.update({
+  id: '/rosa',
+  path: '/rosa',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MemoriasRoute = MemoriasRouteImport.update({
+  id: '/memorias',
+  path: '/memorias',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InicioRoute = InicioRouteImport.update({
+  id: '/inicio',
+  path: '/inicio',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FuturoRoute = FuturoRouteImport.update({
+  id: '/futuro',
+  path: '/futuro',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EssencialRoute = EssencialRouteImport.update({
+  id: '/essencial',
+  path: '/essencial',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CativarRoute = CativarRouteImport.update({
+  id: '/cativar',
+  path: '/cativar',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CartaRoute = CartaRouteImport.update({
+  id: '/carta',
+  path: '/carta',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +67,144 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/carta': typeof CartaRoute
+  '/cativar': typeof CativarRoute
+  '/essencial': typeof EssencialRoute
+  '/futuro': typeof FuturoRoute
+  '/inicio': typeof InicioRoute
+  '/memorias': typeof MemoriasRoute
+  '/rosa': typeof RosaRoute
+  '/voce': typeof VoceRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/carta': typeof CartaRoute
+  '/cativar': typeof CativarRoute
+  '/essencial': typeof EssencialRoute
+  '/futuro': typeof FuturoRoute
+  '/inicio': typeof InicioRoute
+  '/memorias': typeof MemoriasRoute
+  '/rosa': typeof RosaRoute
+  '/voce': typeof VoceRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/carta': typeof CartaRoute
+  '/cativar': typeof CativarRoute
+  '/essencial': typeof EssencialRoute
+  '/futuro': typeof FuturoRoute
+  '/inicio': typeof InicioRoute
+  '/memorias': typeof MemoriasRoute
+  '/rosa': typeof RosaRoute
+  '/voce': typeof VoceRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/carta'
+    | '/cativar'
+    | '/essencial'
+    | '/futuro'
+    | '/inicio'
+    | '/memorias'
+    | '/rosa'
+    | '/voce'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/carta'
+    | '/cativar'
+    | '/essencial'
+    | '/futuro'
+    | '/inicio'
+    | '/memorias'
+    | '/rosa'
+    | '/voce'
+  id:
+    | '__root__'
+    | '/'
+    | '/carta'
+    | '/cativar'
+    | '/essencial'
+    | '/futuro'
+    | '/inicio'
+    | '/memorias'
+    | '/rosa'
+    | '/voce'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CartaRoute: typeof CartaRoute
+  CativarRoute: typeof CativarRoute
+  EssencialRoute: typeof EssencialRoute
+  FuturoRoute: typeof FuturoRoute
+  InicioRoute: typeof InicioRoute
+  MemoriasRoute: typeof MemoriasRoute
+  RosaRoute: typeof RosaRoute
+  VoceRoute: typeof VoceRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/voce': {
+      id: '/voce'
+      path: '/voce'
+      fullPath: '/voce'
+      preLoaderRoute: typeof VoceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rosa': {
+      id: '/rosa'
+      path: '/rosa'
+      fullPath: '/rosa'
+      preLoaderRoute: typeof RosaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/memorias': {
+      id: '/memorias'
+      path: '/memorias'
+      fullPath: '/memorias'
+      preLoaderRoute: typeof MemoriasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/inicio': {
+      id: '/inicio'
+      path: '/inicio'
+      fullPath: '/inicio'
+      preLoaderRoute: typeof InicioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/futuro': {
+      id: '/futuro'
+      path: '/futuro'
+      fullPath: '/futuro'
+      preLoaderRoute: typeof FuturoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/essencial': {
+      id: '/essencial'
+      path: '/essencial'
+      fullPath: '/essencial'
+      preLoaderRoute: typeof EssencialRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cativar': {
+      id: '/cativar'
+      path: '/cativar'
+      fullPath: '/cativar'
+      preLoaderRoute: typeof CativarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/carta': {
+      id: '/carta'
+      path: '/carta'
+      fullPath: '/carta'
+      preLoaderRoute: typeof CartaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,6 +217,14 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CartaRoute: CartaRoute,
+  CativarRoute: CativarRoute,
+  EssencialRoute: EssencialRoute,
+  FuturoRoute: FuturoRoute,
+  InicioRoute: InicioRoute,
+  MemoriasRoute: MemoriasRoute,
+  RosaRoute: RosaRoute,
+  VoceRoute: VoceRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
