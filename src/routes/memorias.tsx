@@ -33,10 +33,10 @@ const memories: Memory[] = [
   { id: "2", title: "A primeira viagem", date: "nosso primeiro mundo juntos", x: 32, y: 40, text: "Acordar e te ver dormindo perto de uma janela qualquer foi a primeira vez que entendi o que é casa." },
   { id: "3", title: "A noite das estrelas", date: "uma madrugada qualquer", x: 50, y: 18, text: "Você apontou pro céu, eu apontei pra você. Ganhei. Sempre ganho quando o prêmio é olhar pra você." },
   { id: "4", title: "Um café às pressas", date: "uma manhã comum", x: 66, y: 46, text: "Não tinha nada de especial — só você, descalça, falando de coisas pequenas. Era tudo." },
-  { id: "5", title: "A conversa difícil", date: "quando crescemos juntos", x: 80, y: 28, text: "A gente discordou, chorou, e ainda assim escolheu ficar. Foi ali que eu soube: isso é raro." },
+  { id: "5", title: "A conversa difícil", date: "quando crescemos juntos", x: 74, y: 30, text: "A gente discordou, chorou, e ainda assim escolheu ficar. Foi ali que eu soube: isso é raro." },
   { id: "6", title: "Aquele abraço", date: "um dia ruim que você salvou", x: 24, y: 66, text: "Sem dizer nada, você me segurou. E o mundo, por um instante, voltou a fazer sentido." },
-  { id: "7", title: "Risadas no carro", date: "uma estrada qualquer", x: 56, y: 74, text: "Música alta, janela aberta, sua mão na minha. Eu queria que a estrada nunca acabasse." },
-  { id: "8", title: "3 anos", date: "hoje", x: 78, y: 68, text: "E aqui estamos. Mais nós do que nunca. Eu te escolheria de novo, em qualquer universo, mil vezes." },
+  { id: "7", title: "Risadas no carro", date: "uma estrada qualquer", x: 50, y: 74, text: "Música alta, janela aberta, sua mão na minha. Eu queria que a estrada nunca acabasse." },
+  { id: "8", title: "3 anos", date: "hoje", x: 62, y: 60, text: "E aqui estamos. Mais nós do que nunca. Eu te escolheria de novo, em qualquer universo, mil vezes." },
 ];
 
 function Memorias() {

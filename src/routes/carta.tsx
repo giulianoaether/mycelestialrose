@@ -54,8 +54,8 @@ function Carta() {
               className="mt-8 space-y-6 font-serif text-lg italic leading-loose sm:text-xl"
             >
               <p>
-                Eu poderia tentar escrever algo perfeito, mas a verdade é que nenhuma frase
-                cabe o tamanho do que eu sinto por você.
+                Eu poderia tentar escrever algo perfeito, mas a verdade é que em nenhuma
+                frase cabe o tamanho do que eu sinto por você.
               </p>
               <p>
                 Em três anos, você virou o lugar onde eu descanso, a piada que eu lembro sozinho,

@@ -53,9 +53,9 @@ function Futuro() {
           delay={0.6}
           className="mt-12 max-w-2xl font-serif text-lg italic leading-relaxed text-foreground/70 sm:text-xl"
         >
-          Quero crescer ao seu lado. Quero te ver realizar todos os sonhos que você sussurra de madrugada,
-          quando acha que ninguém está ouvindo. Quero ser a casa pra onde você sempre volta,
-          e a estrada que você escolhe quando precisa partir.
+          Quero crescer ao seu lado. Quero estar ao seu lado em cada versão do futuro que você
+          imagina em silêncio, até nas que você ainda tem medo de contar pra alguém. Quero ser a
+          casa pra onde você sempre volta, e a estrada que você escolhe quando precisa partir.
         </RevealText>
 
         <motion.div
