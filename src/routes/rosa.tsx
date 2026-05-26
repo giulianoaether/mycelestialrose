@@ -53,7 +53,7 @@ function Rosa() {
           <WordReveal text="Existem muitas rosas no mundo." stagger={0.08} delay={1.5} />
           <br />
           <span className="text-rose">
-            <WordReveal text="Mas nenhuma delas é você." stagger={0.1} delay={3} />
+            <WordReveal text="Mas nenhuma delas é como você." stagger={0.1} delay={3} />
           </span>
         </h2>
 

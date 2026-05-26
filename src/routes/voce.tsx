@@ -18,14 +18,14 @@ export const Route = createFileRoute("/voce")({
 });
 
 const loves = [
-  { t: "o seu riso", d: "Aquele que escapa antes de você decidir se queria rir. O som mais bonito que eu já ouvi." },
+  { t: "o seu riso", d: "Aquele que escapa antes de você decidir se queria rir." },
   { t: "o jeito como você cuida", d: "De mim, da sua família, dos seus amigos — até dos estranhos. Você ama de um jeito raro." },
   { t: "seus olhos quando você fala do que ama", d: "Brilham diferente. Eu fico em silêncio só para te ver brilhar." },
-  { t: "as suas manhas", d: "A voz mais baixinha, o jeito mole. Você não sabe, mas isso é meu refúgio favorito." },
+  { t: "as suas manhas", d: "A voz mais baixinha, o jeito mole." },
   { t: "a sua coragem", d: "Você é mais forte do que imagina. Eu te admiro mais do que consigo dizer." },
   { t: "o silêncio do nosso abraço", d: "Quando o mundo grita lá fora e a gente, sem dizer nada, entende tudo." },
-  { t: "a forma como você sonha", d: "Grande, bonito, sem medo. Você me ensinou a sonhar de novo." },
-  { t: "você inteira", d: "Cada parte. Até as que você ainda não gosta. Especialmente essas." },
+  { t: "sua inteligência", d: "você é a pessoa mais inteligente que conheço." },
+  { t: "você inteira", d: "você é meu maior amor." },
 ];
 
 function Voce() {
