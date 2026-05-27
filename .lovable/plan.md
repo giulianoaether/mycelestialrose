@@ -1,68 +1,38 @@
-# Refinement Pass — Anniversary Site
+## Reposicionar e remodelar a constelação em /memorias
 
-Pure refinement. No redesign. Preserves palette, typography, pacing, and animation language.
+Dois ajustes combinados em `src/routes/memorias.tsx`: enquadramento vertical mais compacto **e** uma nova forma para a constelação.
 
-## 1. Little Prince visuals (new assets)
+### 1. Enquadramento vertical
 
-Generate two new transparent PNGs in `src/assets/` with the existing premium/cinematic style — soft gold-lit silhouettes, subtle glow, painterly but minimal (not cartoonish):
+- Trocar `aspect-[16/10] w-full` por `w-full max-w-3xl h-[clamp(320px,52vh,520px)]`, mantendo `viewBox="0 0 100 62.5"` (o SVG centraliza sozinho).
+- Reduzir `mt-16` → `mt-10` e `py-24` → `py-20` na section.
+- Trocar o cálculo `top: ${m.y / 0.625}%` por `top: ${m.y * (100/62.5)}%` (equivalente, mas explícito agora que a altura não vem mais do aspect ratio).
+- Resultado: a constelação fica visualmente "abraçada" pela frase "Cada estrela aqui é uma lembrança…" acima e pelo link "O que eu amo em você" abaixo, na mesma tela em desktops comuns.
 
-- `little-prince-plane.png` — the Little Prince riding a small paper-like airplane, side profile, silhouette against transparent bg, gold rim light.
-- `little-prince-rose.png` — the Little Prince standing beside his glowing rose, contemplative side view, transparent bg.
+### 2. Nova forma da constelação
 
-Both rendered at premium quality to match the existing `rose-glow.png` aesthetic. QA each before use.
+Reescrever as coordenadas `x, y` das 8 memórias para desenhar uma constelação com mais intenção poética — uma curva ascendente em arco aberto (como uma trajetória de voo, ecoando o avião do Pequeno Príncipe), com a estrela #8 ("3 anos / hoje") como ponto mais alto e luminoso à direita, e a #1 ("O primeiro olhar") ancorando o canto inferior esquerdo.
 
-## 2. Intro screen (`src/routes/index.tsx`) — flying prince + exit transition
+Coordenadas novas (mantendo o sistema 0–100 em x e 0–62.5 em y do viewBox):
 
-- Add a small, slow-drifting `little-prince-plane.png` floating across the hero (gentle horizontal drift + subtle vertical bob, very slow, low opacity ~0.85, soft drop-shadow).
-- On `ENTRAR` click: trigger a cinematic exit before navigation
-  - Plane animates across the full viewport (`x: 0 → 120vw`), slight scale-up, slight rise, motion blur via `filter: blur()`.
-  - Background gently fades to black (`opacity` overlay 0 → 1) in parallel.
-  - Duration ~1.8s, ease `[0.22, 0.61, 0.36, 1]`; `navigate({ to: "/inicio" })` fires at the end.
-- Implemented with a small `useState("idle" | "leaving")` + `AnimatePresence` — no new libraries.
+| # | Memória | x | y |
+|---|---|---|---|
+| 1 | O primeiro olhar | 10 | 50 |
+| 2 | A primeira viagem | 22 | 38 |
+| 3 | A noite das estrelas | 34 | 26 |
+| 4 | Um café às pressas | 44 | 42 |
+| 5 | A conversa difícil | 56 | 30 |
+| 6 | Aquele abraço | 64 | 46 |
+| 7 | Risadas no carro | 76 | 32 |
+| 8 | 3 anos | 88 | 18 |
 
-## 3. Final chapter — symbolic parallel composition
+Características do novo desenho:
+- Arco ascendente da esquerda inferior à direita superior, com pequenas oscilações verticais que dão ritmo (sobe-desce-sobe), evitando uma curva mecânica.
+- Distâncias entre estrelas vizinhas ficam entre 12 e 18 unidades — abaixo do limite de 30 usado para desenhar linhas de conexão, então o arco se conecta naturalmente como uma constelação contínua, em vez do emaranhado denso atual.
+- Estrela #8 destacada no topo direito, reforçando narrativamente o "hoje" como ápice da jornada.
 
-In `src/routes/essencial.tsx`, before the closing line, add a two-column composition:
+Nada mais muda: texto, datas, paleta, tipografia, animações de entrada, modal, `SectionTransition` — todos preservados.
 
-```text
-+----------------------+        +----------------------+
-|  [ couple photo ]    |   ~    |  prince + rose png   |
-|  "nós"               |        |  "ele e sua rosa"    |
-+----------------------+        +----------------------+
-```
+### Arquivos afetados
 
-- Left: a placeholder `src/assets/couple-placeholder.jpg` (soft framed, rounded-sm, gold border-glow) with caption `nós` in `font-hand`.
-- Right: `little-prince-rose.png` on transparent bg with caption `ele e sua rosa`.
-- Center tilde/ornament in gold connecting both — symbolic equivalence.
-- Both fade in with stagger, then the existing "O essencial é invisível aos olhos" line reveals below as today.
-- Note in chat: user can swap `couple-placeholder.jpg` for a real photo by replacing the file.
-
-## 4. Copy edits
-
-| Route | Change |
-|---|---|
-| `src/routes/rosa.tsx` | `Mas nenhuma delas é você.` → `Mas nenhuma delas é como você.` |
-| `src/routes/voce.tsx` card 01 | drop `O som mais bonito que eu já ouvi.` |
-| `src/routes/voce.tsx` card 04 | drop `Você não sabe, mas isso é meu refúgio favorito.` |
-| `src/routes/voce.tsx` card 07 | title → `sua inteligência`; text → `você é a pessoa mais inteligente que conheço` |
-| `src/routes/voce.tsx` card 08 | text → `você é meu maior amor` |
-| `src/routes/futuro.tsx` | replace the "sussurra de madrugada" sentence with the new "cada versão do futuro…" sentence |
-| `src/routes/carta.tsx` | `nenhuma frase cabe o tamanho` → `em nenhuma frase cabe o tamanho` |
-| `src/routes/essencial.tsx` | `— eu te amo` → `— eu te amo, minha rosa` |
-
-## 5. Constellation rebalance (`src/routes/memorias.tsx`)
-
-Star #8 (`78, 68`) currently sits isolated in the lower-right, visually drifting away from the cluster. Reposition to `62, 60` so it joins the lower arc near stars #4 and #7, and tighten star #5 from `80, 28` to `74, 30` so the upper arc closes. Keep the distance-based line algorithm — the new coords produce a balanced, intentional shape without code changes to the renderer.
-
-## What stays untouched
-
-Palette tokens, fonts, `StarField`, `AmbientAudio`, `ChapterNav`, route structure, all timings on other sections, all other copy.
-
----
-
-### Technical notes
-
-- New files: `src/assets/little-prince-plane.png`, `src/assets/little-prince-rose.png`, `src/assets/couple-placeholder.jpg`.
-- Edited files: `src/routes/index.tsx`, `src/routes/rosa.tsx`, `src/routes/voce.tsx`, `src/routes/futuro.tsx`, `src/routes/carta.tsx`, `src/routes/essencial.tsx`, `src/routes/memorias.tsx`.
-- No new dependencies. Framer Motion handles the plane exit via `animate` + `onAnimationComplete` → `navigate`.
-- All new visuals follow the existing `oklch` token system and `drop-shadow` glow conventions.
+- `src/routes/memorias.tsx` (único)

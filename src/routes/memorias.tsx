@@ -29,14 +29,14 @@ type Memory = {
 };
 
 const memories: Memory[] = [
-  { id: "1", title: "O primeiro olhar", date: "começo de tudo", x: 14, y: 22, text: "Eu não sabia, mas o universo já estava conspirando. Você riu de algo bobo, e algo dentro de mim mudou de lugar — para sempre." },
-  { id: "2", title: "A primeira viagem", date: "nosso primeiro mundo juntos", x: 32, y: 40, text: "Acordar e te ver dormindo perto de uma janela qualquer foi a primeira vez que entendi o que é casa." },
-  { id: "3", title: "A noite das estrelas", date: "uma madrugada qualquer", x: 50, y: 18, text: "Você apontou pro céu, eu apontei pra você. Ganhei. Sempre ganho quando o prêmio é olhar pra você." },
-  { id: "4", title: "Um café às pressas", date: "uma manhã comum", x: 66, y: 46, text: "Não tinha nada de especial — só você, descalça, falando de coisas pequenas. Era tudo." },
-  { id: "5", title: "A conversa difícil", date: "quando crescemos juntos", x: 74, y: 30, text: "A gente discordou, chorou, e ainda assim escolheu ficar. Foi ali que eu soube: isso é raro." },
-  { id: "6", title: "Aquele abraço", date: "um dia ruim que você salvou", x: 24, y: 66, text: "Sem dizer nada, você me segurou. E o mundo, por um instante, voltou a fazer sentido." },
-  { id: "7", title: "Risadas no carro", date: "uma estrada qualquer", x: 50, y: 74, text: "Música alta, janela aberta, sua mão na minha. Eu queria que a estrada nunca acabasse." },
-  { id: "8", title: "3 anos", date: "hoje", x: 62, y: 60, text: "E aqui estamos. Mais nós do que nunca. Eu te escolheria de novo, em qualquer universo, mil vezes." },
+  { id: "1", title: "O primeiro olhar", date: "começo de tudo", x: 10, y: 50, text: "Eu não sabia, mas o universo já estava conspirando. Você riu de algo bobo, e algo dentro de mim mudou de lugar — para sempre." },
+  { id: "2", title: "A primeira viagem", date: "nosso primeiro mundo juntos", x: 22, y: 38, text: "Acordar e te ver dormindo perto de uma janela qualquer foi a primeira vez que entendi o que é casa." },
+  { id: "3", title: "A noite das estrelas", date: "uma madrugada qualquer", x: 34, y: 26, text: "Você apontou pro céu, eu apontei pra você. Ganhei. Sempre ganho quando o prêmio é olhar pra você." },
+  { id: "4", title: "Um café às pressas", date: "uma manhã comum", x: 44, y: 42, text: "Não tinha nada de especial — só você, descalça, falando de coisas pequenas. Era tudo." },
+  { id: "5", title: "A conversa difícil", date: "quando crescemos juntos", x: 56, y: 30, text: "A gente discordou, chorou, e ainda assim escolheu ficar. Foi ali que eu soube: isso é raro." },
+  { id: "6", title: "Aquele abraço", date: "um dia ruim que você salvou", x: 64, y: 46, text: "Sem dizer nada, você me segurou. E o mundo, por um instante, voltou a fazer sentido." },
+  { id: "7", title: "Risadas no carro", date: "uma estrada qualquer", x: 76, y: 32, text: "Música alta, janela aberta, sua mão na minha. Eu queria que a estrada nunca acabasse." },
+  { id: "8", title: "3 anos", date: "hoje", x: 88, y: 18, text: "E aqui estamos. Mais nós do que nunca. Eu te escolheria de novo, em qualquer universo, mil vezes." },
 ];
 
 function Memorias() {
@@ -46,7 +46,7 @@ function Memorias() {
     <main className="relative min-h-screen overflow-hidden bg-background">
       <StarField density={0.6} />
 
-      <section className="relative mx-auto flex min-h-screen max-w-6xl flex-col items-center px-6 py-24 text-center">
+      <section className="relative mx-auto flex min-h-screen max-w-6xl flex-col items-center px-6 py-20 text-center">
         <RevealText as="p" className="font-serif text-xs uppercase tracking-[0.6em] text-gold/80">
           Capítulo III
         </RevealText>
@@ -57,7 +57,7 @@ function Memorias() {
           Cada estrela aqui é uma lembrança. Toque numa delas.
         </RevealText>
 
-        <div className="relative mt-16 aspect-[16/10] w-full">
+        <div className="relative mt-10 h-[clamp(320px,52vh,520px)] w-full max-w-3xl">
           <svg viewBox="0 0 100 62.5" className="absolute inset-0 h-full w-full" aria-hidden="true">
             {memories.map((m, i) =>
               memories.slice(i + 1).map((n, j) => {
@@ -88,7 +88,7 @@ function Memorias() {
               viewport={{ once: true }}
               transition={{ duration: 1.2, delay: 0.6 + i * 0.15 }}
               className="group absolute -translate-x-1/2 -translate-y-1/2"
-              style={{ left: `${m.x}%`, top: `${m.y / 0.625}%` }}
+              style={{ left: `${m.x}%`, top: `${m.y * (100 / 62.5)}%` }}
               aria-label={m.title}
             >
               <span className="relative flex items-center justify-center">
