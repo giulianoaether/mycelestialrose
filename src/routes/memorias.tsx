@@ -29,14 +29,14 @@ type Memory = {
 };
 
 const memories: Memory[] = [
-  { id: "1", title: "O primeiro olhar", date: "começo de tudo", x: 10, y: 50, text: "Eu não sabia, mas o universo já estava conspirando. Você riu de algo bobo, e algo dentro de mim mudou de lugar — para sempre." },
-  { id: "2", title: "A primeira viagem", date: "nosso primeiro mundo juntos", x: 22, y: 38, text: "Acordar e te ver dormindo perto de uma janela qualquer foi a primeira vez que entendi o que é casa." },
-  { id: "3", title: "A noite das estrelas", date: "uma madrugada qualquer", x: 34, y: 26, text: "Você apontou pro céu, eu apontei pra você. Ganhei. Sempre ganho quando o prêmio é olhar pra você." },
-  { id: "4", title: "Um café às pressas", date: "uma manhã comum", x: 44, y: 42, text: "Não tinha nada de especial — só você, descalça, falando de coisas pequenas. Era tudo." },
-  { id: "5", title: "A conversa difícil", date: "quando crescemos juntos", x: 56, y: 30, text: "A gente discordou, chorou, e ainda assim escolheu ficar. Foi ali que eu soube: isso é raro." },
-  { id: "6", title: "Aquele abraço", date: "um dia ruim que você salvou", x: 64, y: 46, text: "Sem dizer nada, você me segurou. E o mundo, por um instante, voltou a fazer sentido." },
-  { id: "7", title: "Risadas no carro", date: "uma estrada qualquer", x: 76, y: 32, text: "Música alta, janela aberta, sua mão na minha. Eu queria que a estrada nunca acabasse." },
-  { id: "8", title: "3 anos", date: "hoje", x: 88, y: 18, text: "E aqui estamos. Mais nós do que nunca. Eu te escolheria de novo, em qualquer universo, mil vezes." },
+  { id: "1", title: "O primeiro olhar", date: "começo de tudo", x: 30, y: 12, text: "Eu não sabia, mas o universo já estava conspirando. Você riu de algo bobo, e algo dentro de mim mudou de lugar — para sempre." },
+  { id: "2", title: "A primeira viagem", date: "nosso primeiro mundo juntos", x: 18, y: 20, text: "Acordar e te ver dormindo perto de uma janela qualquer foi a primeira vez que entendi o que é casa." },
+  { id: "3", title: "A noite das estrelas", date: "uma madrugada qualquer", x: 16, y: 32, text: "Você apontou pro céu, eu apontei pra você. Ganhei. Sempre ganho quando o prêmio é olhar pra você." },
+  { id: "4", title: "Um café às pressas", date: "uma manhã comum", x: 50, y: 22, text: "Não tinha nada de especial — só você, descalça, falando de coisas pequenas. Era tudo." },
+  { id: "5", title: "A conversa difícil", date: "quando crescemos juntos", x: 70, y: 12, text: "A gente discordou, chorou, e ainda assim escolheu ficar. Foi ali que eu soube: isso é raro." },
+  { id: "6", title: "Aquele abraço", date: "um dia ruim que você salvou", x: 82, y: 20, text: "Sem dizer nada, você me segurou. E o mundo, por um instante, voltou a fazer sentido." },
+  { id: "7", title: "Risadas no carro", date: "uma estrada qualquer", x: 84, y: 32, text: "Música alta, janela aberta, sua mão na minha. Eu queria que a estrada nunca acabasse." },
+  { id: "8", title: "3 anos", date: "hoje", x: 50, y: 54, text: "E aqui estamos. Mais nós do que nunca. Eu te escolheria de novo, em qualquer universo, mil vezes." },
 ];
 
 function Memorias() {
