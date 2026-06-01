@@ -29,15 +29,29 @@ type Memory = {
 };
 
 const memories: Memory[] = [
-  { id: "1", title: "O primeiro olhar", date: "começo de tudo", x: 30, y: 12, text: "Eu não sabia, mas o universo já estava conspirando. Você riu de algo bobo, e algo dentro de mim mudou de lugar — para sempre." },
-  { id: "2", title: "A primeira viagem", date: "nosso primeiro mundo juntos", x: 18, y: 20, text: "Acordar e te ver dormindo perto de uma janela qualquer foi a primeira vez que entendi o que é casa." },
-  { id: "3", title: "A noite das estrelas", date: "uma madrugada qualquer", x: 16, y: 32, text: "Você apontou pro céu, eu apontei pra você. Ganhei. Sempre ganho quando o prêmio é olhar pra você." },
-  { id: "4", title: "Um café às pressas", date: "uma manhã comum", x: 50, y: 22, text: "Não tinha nada de especial — só você, descalça, falando de coisas pequenas. Era tudo." },
-  { id: "5", title: "A conversa difícil", date: "quando crescemos juntos", x: 70, y: 12, text: "A gente discordou, chorou, e ainda assim escolheu ficar. Foi ali que eu soube: isso é raro." },
-  { id: "6", title: "Aquele abraço", date: "um dia ruim que você salvou", x: 82, y: 20, text: "Sem dizer nada, você me segurou. E o mundo, por um instante, voltou a fazer sentido." },
-  { id: "7", title: "Risadas no carro", date: "uma estrada qualquer", x: 84, y: 32, text: "Música alta, janela aberta, sua mão na minha. Eu queria que a estrada nunca acabasse." },
-  { id: "8", title: "3 anos", date: "hoje", x: 50, y: 54, text: "E aqui estamos. Mais nós do que nunca. Eu te escolheria de novo, em qualquer universo, mil vezes." },
+  { id: "1", title: "Sushi", date: "UM JANTAR QUALQUER", x: 18, y: 31, text: "Engraçado como uma comida acabou virando uma lembrança.\n\nTalvez porque, toda vez que sentamos juntos para comer sushi, eu perceba que a melhor parte nunca foi a comida. Foi você." },
+  { id: "2", title: "A primeira viagem", date: "nosso primeiro mundo juntos", x: 24, y: 15, text: "Acordar e te ver dormindo perto de uma janela qualquer foi a primeira vez que entendi o que é casa." },
+  { id: "3", title: "Os pulinhos", date: "UM DIA FELIZ", x: 39, y: 24, text: "Quando você fica feliz de verdade, seu sorriso aparece antes mesmo de qualquer palavra.\n\nE às vezes vêm aqueles pulinhos espontâneos que me fazem lembrar o quanto eu amo te ver feliz." },
+  { id: "4", title: "Nosso pequeno mundo", date: "quando tudo ficou mais nosso", x: 48, y: 10, text: "Entre conversas, planos pequenos e jeitos só nossos, a gente foi criando um lugar no mundo que parece caber exatamente em nós dois." },
+  { id: "5", title: "O rímel", date: "UMA MANHÃ COMUM", x: 62, y: 16, text: "Toda vez que você passa rímel, coloca a língua pra fora sem perceber.\n\nÉ uma daquelas coisas pequenas que provavelmente passam despercebidas por quase todo mundo. Mas eu sempre noto. E sempre sorrio." },
+  { id: "6", title: "A conversa difícil", date: "quando crescemos juntos", x: 73, y: 8, text: "A gente discordou, chorou, e ainda assim escolheu ficar. Foi ali que eu soube: isso é raro." },
+  { id: "7", title: "Aquele abraço", date: "um dia ruim que você salvou", x: 60, y: 39, text: "Sem dizer nada, você me segurou. E o mundo, por um instante, voltou a fazer sentido." },
+  { id: "8", title: "Risadas no carro", date: "uma estrada qualquer", x: 52, y: 55, text: "Música alta, janela aberta, sua mão na minha. Eu queria que a estrada nunca acabasse." },
+  { id: "9", title: "O brilho de agora", date: "mais uma estrela no nosso céu", x: 36, y: 47, text: "Tem algo bonito em perceber que a nossa história ainda está acendendo pontos novos, mesmo depois de tanto caminho já iluminado." },
+  { id: "10", title: "3 anos", date: "hoje", x: 27, y: 60, text: "E aqui estamos. Mais nós do que nunca. Eu te escolheria de novo, em qualquer universo, mil vezes." },
 ];
+
+const constellationLines = [
+  ["1", "2"], ["2", "3"], ["3", "4"], ["4", "5"], ["5", "6"],
+  ["5", "7"], ["7", "8"], ["8", "9"], ["9", "1"], ["10", "9"],
+] as const;
+
+const decorativeRays = [
+  { x2: 76, y2: 3.5 },
+  { x2: 81, y2: 7 },
+  { x2: 79, y2: 12 },
+  { x2: 75.5, y2: 13.5 },
+] as const;
 
 function Memorias() {
   const [active, setActive] = useState<Memory | null>(null);
@@ -58,25 +72,61 @@ function Memorias() {
         </RevealText>
 
         <div className="relative mt-10 h-[clamp(320px,52vh,520px)] w-full max-w-3xl">
-          <svg viewBox="0 0 100 62.5" className="absolute inset-0 h-full w-full" aria-hidden="true">
-            {memories.map((m, i) =>
-              memories.slice(i + 1).map((n, j) => {
-                const dist = Math.hypot(m.x - n.x, m.y - n.y);
-                if (dist > 30) return null;
-                return (
-                  <motion.line
-                    key={`${i}-${j}`}
-                    x1={m.x} y1={m.y} x2={n.x} y2={n.y}
-                    stroke="oklch(0.82 0.11 78 / 0.18)"
-                    strokeWidth="0.1"
-                    initial={{ pathLength: 0 }}
-                    whileInView={{ pathLength: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 3, delay: 0.8 }}
-                  />
-                );
-              })
-            )}
+          <svg
+            viewBox="0 0 100 62.5"
+            preserveAspectRatio="none"
+            className="absolute inset-0 h-full w-full"
+            aria-hidden="true"
+          >
+            {constellationLines.map(([from, to], i) => {
+              const start = memories.find((m) => m.id === from);
+              const end = memories.find((m) => m.id === to);
+              if (!start || !end) return null;
+
+              return (
+                <motion.line
+                  key={`${from}-${to}`}
+                  x1={start.x} y1={start.y} x2={end.x} y2={end.y}
+                  stroke="oklch(0.82 0.11 78 / 0.32)"
+                  strokeWidth="0.16"
+                  initial={{ pathLength: 0 }}
+                  whileInView={{ pathLength: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 3, delay: 0.6 + i * 0.08 }}
+                />
+              );
+            })}
+            {decorativeRays.map((ray, i) => {
+              const anchor = memories.find((m) => m.id === "6");
+              if (!anchor) return null;
+
+              return (
+                <motion.line
+                  key={`ray-${i}`}
+                  x1={anchor.x} y1={anchor.y} x2={ray.x2} y2={ray.y2}
+                  stroke="oklch(0.82 0.11 78 / 0.28)"
+                  strokeWidth="0.12"
+                  initial={{ pathLength: 0, opacity: 0 }}
+                  whileInView={{ pathLength: 1, opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 2.2, delay: 1.6 + i * 0.12 }}
+                />
+              );
+            })}
+            {decorativeRays.map((ray, i) => (
+              <motion.circle
+                key={`ray-star-${i}`}
+                cx={ray.x2}
+                cy={ray.y2}
+                r="0.42"
+                fill="oklch(0.95 0.02 80 / 0.7)"
+                initial={{ opacity: 0, scale: 0 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.2, delay: 1.9 + i * 0.1 }}
+                style={{ filter: "drop-shadow(0 0 1.4px oklch(0.82 0.11 78 / 0.55))" }}
+              />
+            ))}
           </svg>
 
           {memories.map((m, i) => (
