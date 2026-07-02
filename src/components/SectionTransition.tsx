@@ -4,16 +4,17 @@ import { motion } from "framer-motion";
 interface SectionTransitionProps {
   to: string;
   label: string;
+  className?: string;
 }
 
-export function SectionTransition({ to, label }: SectionTransitionProps) {
+export function SectionTransition({ to, label, className = "mt-24" }: SectionTransitionProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 1.4, delay: 0.4 }}
-      className="mt-24 flex flex-col items-center gap-4"
+      className={`${className} flex flex-col items-center gap-4`}
     >
       <Link
         to={to}
